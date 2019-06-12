@@ -1,0 +1,87 @@
+version: "3"
+
+services:
+  selenium-hub:
+    image: selenium/hub
+    container_name: seleniumhub
+    ports:
+      - "4444:4444"
+    networks:
+      - test-net
+
+  chrome1:
+    image: selenium/node-chrome-debug
+    container_name: chromenode1
+    volumes:
+      - /dev/shm:/dev/shm
+    ports:
+      - "5901:5900"
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=seleniumhub
+      - HUB_PORT=4444
+    networks:
+      - test-net
+
+  chrome2:
+    image: selenium/node-chrome-debug
+    container_name: chromenode2
+    volumes:
+      - /dev/shm:/dev/shm
+    ports:
+      - "5902:5900"
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=seleniumhub
+      - HUB_PORT=4444
+    networks:
+      - test-net
+
+  chrome3:
+    image: selenium/node-chrome-debug
+    container_name: chromenode3
+    volumes:
+      - /dev/shm:/dev/shm
+    ports:
+      - "5903:5900"
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=seleniumhub
+      - HUB_PORT=4444
+    networks:
+      - test-net
+
+  chrome4:
+    image: selenium/node-chrome-debug
+    container_name: chromenode4
+    volumes:
+      - /dev/shm:/dev/shm
+    ports:
+      - "5904:5900"
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=seleniumhub
+      - HUB_PORT=4444
+    networks:
+      - test-net
+
+  chrome5:
+    image: selenium/node-chrome-debug
+    container_name: chromenode5
+    volumes:
+      - /dev/shm:/dev/shm
+    ports:
+      - "5905:5900"
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=seleniumhub
+      - HUB_PORT=4444
+    networks:
+      - test-net
+networks:
+  test-net:
